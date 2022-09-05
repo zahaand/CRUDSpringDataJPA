@@ -6,7 +6,7 @@
     <title>Show Book</title>
 </head>
 <body>
-<p th:text="${book.hetTitle() + ', ' + book.getAuthor + ', ' + book.getPublishingYear()}">VALUE</p>
+<p th:text="${book.getTitle() + ', ' + book.getAuthor + ', ' + book.getPublishingYear()}">VALUE</p>
 
 <div th:if="${owner}">
     <span>Книга сейчас у: </span> <span th:text="${owner.getFullName()}">Person name</span>
@@ -25,7 +25,7 @@
                     th:text="${person.getFullName()}"></option>
         </select>
 
-        <input type="submit" value="Назначить книгу этому человеку">
+        <input type="submit" value="Назначить книгу">
 
     </form>
 </div>

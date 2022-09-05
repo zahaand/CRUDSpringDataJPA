@@ -1,7 +1,7 @@
-package com.zahaand.library_project.util;
+package com.zahaand.libraryproject.util;
 
-import com.zahaand.library_project.dao.PersonDAO;
-import com.zahaand.library_project.models.Person;
+import com.zahaand.libraryproject.dao.PersonDAO;
+import com.zahaand.libraryproject.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -25,7 +25,7 @@ public class PersonValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Person person = (Person) target;
         if (personDAO.getPersonByFullName(person.getFullName()).isPresent()) {
-            errors.rejectValue("full_name", "", "человек с таким именем уже существует");
+            errors.rejectValue("full_name", "", "Человек с таким именем уже существует");
         }
     }
 }

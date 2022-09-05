@@ -1,8 +1,6 @@
-package com.zahaand.library.models;
+package com.zahaand.libraryproject.models;
 
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class Book {
     private int id;
@@ -16,15 +14,15 @@ public class Book {
     private String author;
 
     @Min(value = 1500, message = "Год издания должен быть больше 1500")
-    private int year;
+    private int publishingYear;
 
     public Book() {
     }
 
-    public Book(String title, String author, int year) {
+    public Book(String title, String author, int publishingYear) {
         this.title = title;
         this.author = author;
-        this.year = year;
+        this.publishingYear = publishingYear;
     }
 
     public int getId() {
@@ -51,12 +49,12 @@ public class Book {
         this.author = author;
     }
 
-    public int getYear() {
-        return year;
+    public int getPublishingYear() {
+        return publishingYear;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setPublishingYear(int publishingYear) {
+        this.publishingYear = publishingYear;
     }
 }
 

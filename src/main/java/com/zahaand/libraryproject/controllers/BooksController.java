@@ -1,9 +1,9 @@
-package com.zahaand.library_project.controllers;
+package com.zahaand.libraryproject.controllers;
 
-import com.zahaand.library_project.dao.BookDAO;
-import com.zahaand.library_project.dao.PersonDAO;
-import com.zahaand.library_project.models.Book;
-import com.zahaand.library_project.models.Person;
+import com.zahaand.libraryproject.dao.BookDAO;
+import com.zahaand.libraryproject.dao.PersonDAO;
+import com.zahaand.libraryproject.models.Book;
+import com.zahaand.libraryproject.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +27,7 @@ public class BooksController {
 
     @GetMapping
     public String index(Model model) {
-        model.addAttribute("books", bookDAO.getBooksList());
+        model.addAttribute("books", bookDAO.index());
         return "books/index";
     }
 
@@ -38,7 +38,7 @@ public class BooksController {
         if (bookOwner.isPresent()) {
             model.addAttribute("owner", bookOwner.get());
         } else {
-            model.addAttribute("people", personDAO.getPeopleList());
+            model.addAttribute("people", personDAO.index());
         }
         return "books/show";
     }
@@ -78,15 +78,15 @@ public class BooksController {
         return "redirect:/books";
     }
 
-    @PatchMapping("/{id}/release")
-    public String release(@PathVariable("id") int id) {
-        bookDAO.releaseBook(id);
-        return "redirect:/books/" + id;
-    }
-
     @PatchMapping("/{id}/assign")
     public String assign(@PathVariable("id") int id, @ModelAttribute("person") Person person) {
         bookDAO.assignBook(id, person);
+        return "redirect:/books/" + id;
+    }
+
+    @PatchMapping("/{id}/release")
+    public String release(@PathVariable("id") int id) {
+        bookDAO.releaseBook(id);
         return "redirect:/books/" + id;
     }
 }

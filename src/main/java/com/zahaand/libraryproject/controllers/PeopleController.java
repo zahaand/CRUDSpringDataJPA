@@ -1,8 +1,8 @@
-package com.zahaand.library_project.controllers;
+package com.zahaand.libraryproject.controllers;
 
-import com.zahaand.library_project.dao.PersonDAO;
-import com.zahaand.library_project.models.Person;
-import com.zahaand.library_project.util.PersonValidator;
+import com.zahaand.libraryproject.dao.PersonDAO;
+import com.zahaand.libraryproject.models.Person;
+import com.zahaand.libraryproject.util.PersonValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,13 +25,13 @@ public class PeopleController {
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("people", personDAO.getPeopleList());
+        model.addAttribute("people", personDAO.index());
         return "people/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        model.addAttribute("person", personDAO.getPerson(id));
+        model.addAttribute("person", personDAO.show(id));
         model.addAttribute(("books"), personDAO.getBooksByPersonId(id));
         return "people/show";
     }
@@ -53,7 +53,7 @@ public class PeopleController {
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
-        model.addAttribute("person", personDAO.getPerson(id));
+        model.addAttribute("person", personDAO.show(id));
         return "people/edit";
     }
 

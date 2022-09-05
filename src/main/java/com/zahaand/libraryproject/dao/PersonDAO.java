@@ -1,7 +1,7 @@
-package com.zahaand.library_project.dao;
+package com.zahaand.libraryproject.dao;
 
-import com.zahaand.library_project.models.Book;
-import com.zahaand.library_project.models.Person;
+import com.zahaand.libraryproject.models.Book;
+import com.zahaand.libraryproject.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,11 +19,11 @@ public class PersonDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Person> getPeopleList() {
+    public List<Person> index() {
         return jdbcTemplate.query("SELECT * FROM people", new BeanPropertyRowMapper<>(Person.class));
     }
 
-    public Person getPerson(int id) {
+    public Person show(int id) {
         return jdbcTemplate.query("SELECT * FROM people WHERE id=?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class)).stream().findAny().orElse(null);
     }
 

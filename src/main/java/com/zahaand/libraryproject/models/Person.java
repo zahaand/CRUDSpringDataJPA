@@ -1,4 +1,4 @@
-package com.zahaand.library.models;
+package com.zahaand.libraryproject.models;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -8,18 +8,17 @@ public class Person {
     private int id;
 
     @NotEmpty(message = "Имя не должно быть пустым")
-    @Size(min=2, max=100, message = "Имя должно быть от 2 до 100 символов длиной")
-    private String name;
+    @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
+    private String fullName;
 
     @Min(value = 1900, message = "Год рождения должен быть больше 1900")
     private int yearOfBirth;
 
-    // Конструктор по умолчанию нужен для Spring, например для ModelAttribute
     public Person() {
     }
 
     public Person(String name, int yearOfBirth) {
-        this.name = name;
+        this.fullName = name;
         this.yearOfBirth = yearOfBirth;
     }
 
@@ -31,12 +30,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String name) {
+        this.fullName = name;
     }
 
     public int getYearOfBirth() {

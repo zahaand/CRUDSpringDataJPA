@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Update Book</title>
 </head>
 <body>
 <form th:method="PATCH" th:action="@{/books/{id}(id=${book.getId()})}" th:object="${book}">
@@ -21,7 +21,7 @@
 
     <label for="year">Введите год издания: </label>
     <input type="text" th:field="*{publishingYear}" id="year">
-    <div style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{publishingYear}">Year Error</div>
+    <div style="color: red" th:if="${#fields.hasErrors('publishingYear')}" th:errors="*{publishingYear}">Year Error</div>
 
     <br/>
 

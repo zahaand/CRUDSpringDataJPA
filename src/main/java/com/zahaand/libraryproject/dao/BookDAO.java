@@ -1,7 +1,7 @@
-package com.zahaand.library_project.dao;
+package com.zahaand.libraryproject.dao;
 
-import com.zahaand.library_project.models.Book;
-import com.zahaand.library_project.models.Person;
+import com.zahaand.libraryproject.models.Book;
+import com.zahaand.libraryproject.models.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -19,7 +19,7 @@ public class BookDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<Book> getBooksList() {
+    public List<Book> index() {
         return jdbcTemplate.query("SELECT * FROM books", new BeanPropertyRowMapper<>(Book.class));
     }
 
@@ -28,11 +28,11 @@ public class BookDAO {
     }
 
     public void saveBook(Book book) {
-        jdbcTemplate.update("INSERT INTO books(title, author, publishing_year) VALUES (?, ?, ?)", book.getTitle(), book.getAuthor(), book.getPublishingYear());
+        jdbcTemplate.update("INSERT INTO books(title, author, year) VALUES (?, ?, ?)", book.getTitle(), book.getAuthor(), book.getPublishingYear());
     }
 
     public void updateBook(int id, Book updatedBook) {
-        jdbcTemplate.update("UPDATE books SET title=?, author=?, publishing_year=? WHERE id=?", updatedBook.getTitle(), updatedBook.getAuthor(), updatedBook.getPublishingYear(), id);
+        jdbcTemplate.update("UPDATE books SET title=?, author=?, year=? WHERE id=?", updatedBook.getTitle(), updatedBook.getAuthor(), updatedBook.getPublishingYear(), id);
     }
 
     public void deleteBook(int id) {
@@ -48,6 +48,6 @@ public class BookDAO {
     }
 
     public void releaseBook(int id) {
-        jdbcTemplate.update("UPDATE books SET person_id=null WHERE id=?", id);
+        jdbcTemplate.update("UPDATE books SET person_id=NULL WHERE id=?", id);
     }
 }
