@@ -1,4 +1,4 @@
-package com.zahaand.libraryproject.config;
+package com.zahaand.webapp.config;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;

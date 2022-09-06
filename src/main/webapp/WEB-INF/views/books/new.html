@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>New Book</title>
 </head>
+
 <body>
 <form th:method="POST" th:action="@{/books}" th:object="${book}">
 
@@ -20,8 +22,8 @@
     <br/>
 
     <label for="year">Введите год издания: </label>
-    <input type="text" th:field="*{publishingYear}" id="year">
-    <div style="color: red" th:if="${#fields.hasErrors('publishingYear')}" th:errors="*{publishingYear}">Year Error</div>
+    <input type="text" th:field="*{year}" id="year">
+    <div style="color: red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Year Error</div>
 
     <br/>
 
